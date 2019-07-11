@@ -52,7 +52,7 @@ public struct SKPhotoBrowserOptions {
 public struct SKButtonOptions {
     public static var closeButtonPadding: CGPoint = CGPoint(x: 5, y: 20)
     public static var deleteButtonPadding: CGPoint = CGPoint(x: 5, y: 20)
-    public static var closeButtonImageName: String = "btn_common_close_wh"
+    public static var closeButtonImage: UIImage = UIImage(named: "SKPhotoBrowser.bundle/images/btn_common_close_wh", in: Bundle(for: SKPhotoBrowser.self), compatibleWith: nil) ?? UIImage()
 }
 
 public struct SKCaptionOptions {
