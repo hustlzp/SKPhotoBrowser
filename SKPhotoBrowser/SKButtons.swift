@@ -25,7 +25,6 @@ class SKButton: UIButton {
     fileprivate let size: CGSize = CGSize(width: 44, height: 44)
     fileprivate var marginX: CGFloat = 0
     fileprivate var marginY: CGFloat = 0
-    fileprivate var extraMarginY: CGFloat = SKMesurement.isPhoneX ? 0 : 0
     
     func setup(_ imageName: String) {
         backgroundColor = .clear
@@ -74,7 +73,7 @@ class SKCloseButton: SKImageButton {
         set { super.marginX = newValue }
     }
     override var marginY: CGFloat {
-        get { return SKButtonOptions.closeButtonPadding.y + extraMarginY }
+        get { return SKButtonOptions.closeButtonPadding.y }
         set { super.marginY = newValue }
     }
     
@@ -101,7 +100,7 @@ class SKDeleteButton: SKImageButton {
         set { super.marginX = newValue }
     }
     override var marginY: CGFloat {
-        get { return SKButtonOptions.deleteButtonPadding.y + extraMarginY }
+        get { return SKButtonOptions.deleteButtonPadding.y }
         set { super.marginY = newValue }
     }
 
