@@ -12,7 +12,7 @@ import UIKit
     var index: Int { get set }
     var underlyingImage: UIImage! { get }
     var photoURL: String! { get set }
-    var didLoadImageFromURL: Bool { get set }
+    var didLoadImageFromURL: Bool { get }
     var caption: String? { get }
     var contentMode: UIView.ContentMode { get set }
     func loadUnderlyingImageAndNotify()
@@ -61,10 +61,12 @@ open class SKPhoto: NSObject, SKPhotoProtocol {
             let request = URLRequest(url: URL(string: photoURL)!)
             if let img = SKCache.sharedCache.imageForRequest(request) {
                 underlyingImage = img
+                didLoadImageFromURL = true
             }
         } else {
             if let img = SKCache.sharedCache.imageForKey(photoURL) {
                 underlyingImage = img
+                didLoadImageFromURL = true
             }
         }
     }
