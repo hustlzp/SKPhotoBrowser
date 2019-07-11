@@ -11,6 +11,8 @@ import UIKit
 @objc public protocol SKPhotoProtocol: NSObjectProtocol {
     var index: Int { get set }
     var underlyingImage: UIImage! { get }
+    var photoURL: String! { get set }
+    var didLoadImageFromURL: Bool { get set }
     var caption: String? { get }
     var contentMode: UIView.ContentMode { get set }
     func loadUnderlyingImageAndNotify()
@@ -25,6 +27,7 @@ open class SKPhoto: NSObject, SKPhotoProtocol {
     open var contentMode: UIView.ContentMode = .scaleAspectFill
     open var shouldCachePhotoURLImage: Bool = false
     open var photoURL: String!
+    open var didLoadImageFromURL: Bool = false
 
     override init() {
         super.init()
@@ -93,6 +96,7 @@ open class SKPhoto: NSObject, SKPhotoProtocol {
                     }
                     DispatchQueue.main.async {
                         self.underlyingImage = image
+                        self.didLoadImageFromURL = true
                         self.loadUnderlyingImageComplete()
                     }
                 }
